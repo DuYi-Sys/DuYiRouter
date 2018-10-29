@@ -1,7 +1,7 @@
 var req = require('request');
 var url = require("url");
 var qs = require("querystring");
-// var log = require("../log");
+var log = require("../log");
 
 var path = new Map();
 
@@ -11,6 +11,7 @@ function turingAPI(request, response) {
     var params = url.parse(request.url, true).query;
 
     if (params && params.text) {
+        log("问：" + params.text, "chat.log");
         var data = {
             "reqType":0,
             "perception": {
@@ -38,9 +39,11 @@ function turingAPI(request, response) {
 
                 var obj = JSON.parse(body);
                 if (obj && obj.results && obj.results.length >0 && obj.results[0].values) {
+                    log("答：" + JSON.stringify(obj.results[0].values), "chat.log");
                     response.write(JSON.stringify(obj.results[0].values));
                     response.end();
                 } else {
+                    log("答：" + "{\"text\":\"布吉岛你说的是什么~\"}", "chat.log");
                     response.write("{\"text\":\"布吉岛你说的是什么~\"}");
                     response.end();
                 }
