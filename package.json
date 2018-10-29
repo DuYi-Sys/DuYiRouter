@@ -18,6 +18,8 @@
   "homepage": "https://github.com/DuYi-Sys/DuYiRouter#readme",
   "dependencies": {
     "moment": "^2.22.2",
-    "mysql": "^2.16.0"
+    "mysql": "^2.16.0",
+    "node-uuid": "^1.4.8",
+    "request": "^2.88.0"
   }
 }

@@ -1,4 +1,5 @@
 var url = require("url");
+var uuid = require("node-uuid");
 var dbUtil = require("./dbutil");
 var log = require("../log");
 var timeUtil = require("./TimeUtil");
@@ -87,7 +88,24 @@ function jump(request, response) {
 
     log(pathName + " " + referer, "access.log");
 
-    response.writeHead(302, {"location": "http://www.baidu.com"});
+    // var flag = false;
+    // var clientId = "null";
+    // try {
+    //     if (request.headers.cookie) {
+    //         var cookies = request.headers.cookie.split(";");
+    //         for (var i = 0 ; i < cookies.length ; i ++) {
+    //             if (cookies[i].split("=")[0].trim() == "client") {
+    //                 flag = true;
+    //                 clientId = cookies[i].split("=")[1].trim();
+    //                 break;
+    //             }
+    //         }
+    //     }
+    // } catch (e) {
+    //     log(e);
+    // }
+
+    response.writeHead(302, {"location": "https://ke.qq.com/course/231570"});
     response.end();
 
     try {
@@ -97,7 +115,6 @@ function jump(request, response) {
     }
 }
 path.set("/jump/[a-zA-Z0-9_]{1,20}", jump);
-
 
 module.exports.path = path;
 
